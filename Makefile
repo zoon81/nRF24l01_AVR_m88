@@ -19,10 +19,10 @@ PRJ = main
 # avr mcu
 MCU = atmega88
 # mcu clock frequency
-CLK = 16000000
+CLK = 8000000
 # avr programmer (and port if necessary)
 # e.g. PRG = usbtiny -or- PRG = arduino -P /dev/tty.usbmodem411
-PRG = usbtiny
+PRG = usbasp
 # fuse values for avr: low, high, and extended
 # these values are from an Arduino Uno (ATMega328P)
 # see http://www.engbedded.com/fusecalc/ for other MCUs and options
@@ -30,10 +30,10 @@ LFU = 0xFF
 HFU = 0xDE
 EFU = 0x05
 # program source files (not including external libraries)
-SRC = $(PRJ).c
+SRC = $(PRJ).cpp
 # where to look for external libraries (consisting of .c/.cpp files and .h files)
 # e.g. EXT = ../../EyeToSee ../../YouSART
-EXT = ./src ./inc
+EXT = ./inc ./src
 
 
 #################################################################################################
