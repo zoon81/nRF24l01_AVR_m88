@@ -54,7 +54,7 @@
                 "/usr/lib/avr/include",
                 "${workspaceRoot}/inc"
             ],
-            "defines": [],
+            "defines": ["__AVR_ATmega88__"],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [

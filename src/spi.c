@@ -7,14 +7,16 @@
 
 #include "spi.h"
 
-void spi_init(){
-	DDRB |= (1 << DD_SCK) | (1 << DD_MOSI) | (1 << DD_CSN);
-	SPCR |= (1 << SPR1) | ( 1 << SPR0 ) | (1 << MSTR) | (1 << SPIE);
+void spi_init(uint8_t CSN){
+	//If SS is configured as an input, it must be held high to ensure Master SPI operation
+	DDRB |= (1 << DD_SCK) | (1 << DD_MOSI) | (1 << CSN);
+	SPCR |= (1 << SPR1) | ( 1 << SPR0 ) | (1 << MSTR) | (1 << SPE);
+	SETBIT(PORTB, PB2);
+	SETBIT(PORTB, CSN);
 }
 
-uint8_t spi_transfer(uint8_t data ){
-	while(SPSR & BIT(SPIF) ); //wait until the previous transmission complete
+uint8_t spi_transfer(uint8_t data){
 	SPDR = data;
-	while(SPSR & BIT(SPIF) ); // wait until this transmission is complete
+	while(!(SPSR & BIT(SPIF) )); // wait until this transmission is complete
 	return SPDR;
 }

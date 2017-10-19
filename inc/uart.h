@@ -10,7 +10,7 @@
 
 #include "main.h"
 
-#define USART_BAUDRATE 2400
+#define USART_BAUDRATE 9600
 #define UBRR_VAL ((F_CPU / (USART_BAUDRATE * 16UL)) - 1) // UBRR
 
 #endif /* UART_H_ */

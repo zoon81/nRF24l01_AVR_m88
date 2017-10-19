@@ -7,7 +7,7 @@
 
 #ifndef INC_NRF24L01_H_
 #define INC_NRF24L01_H_
-#define DD_CE	PB1
+
 
 /* Memory Map */
 #define CONFIG      0x00

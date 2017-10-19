@@ -21,4 +21,12 @@
 #define CLEARBITS(x,y) 	( (x) &= (~(y)) )
 #define CLEARBIT(x,y)	CLEARBITS( (x), (BIT((y))))
 
+#define NRF_CE_1  PB1
+#define NRF_CSN_1 PB2
+
+#define NRF_CE_2  PB7
+#define NRF_CSN_2 PB6
+
+#define payload_len 5
+
 #endif /* INC_MAIN_H_ */
