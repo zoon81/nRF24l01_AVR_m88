@@ -5,6 +5,7 @@
         "io.h": "c",
         "delay.h": "c",
         "uart.h": "c",
-        "spi.h": "c"
+        "spi.h": "c",
+        "interrupt.h": "c"
     }
 }

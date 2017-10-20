@@ -12,5 +12,7 @@
 #define DD_MOSI		DDB3
 #define DD_SCK		DDB5
 
+void spi_init(uint8_t CSN);
+uint8_t spi_transfer(uint8_t data);
 
 #endif /* INC_SPI_H_ */

@@ -5,7 +5,7 @@
  *      Author: t400
  */
 #include "main.h"
-
+// init nRF24l01+ with following setting and setup CE pin
 void nRF2401_init(uint8_t NRF_CSN, uint8_t NRF_CE) {
 	SETBIT(DDRB, NRF_CE);
 	spi_init(NRF_CSN);
@@ -23,7 +23,7 @@ void nRF2401_init(uint8_t NRF_CSN, uint8_t NRF_CE) {
 	nRF_2401_reg_write_s(RX_PW_P0, payload_len, NRF_CSN);	//5byte data in data pipe0 in this case
 	nRF_2401_reg_write_s(CONFIG, 0x1E, NRF_CSN);			//PTX, PWR_UP, CRC_2byte, Enable CRC, No_IRQ
 }
-
+//Write multiple byte register
 void nRF_2401_reg_write_m(uint8_t reg, uint8_t *value, uint8_t size, uint8_t CSN) {
 	CLEARBIT(PORTB, CSN); //Activate Chip Selection on nRF2401
 	_delay_us(10);
@@ -36,7 +36,7 @@ void nRF_2401_reg_write_m(uint8_t reg, uint8_t *value, uint8_t size, uint8_t CSN
 	SETBIT(PORTB, CSN); //deactivate ChipSelect on nRF2401
 	_delay_us(20);
 }
-
+//Write a single byte register
 void nRF_2401_reg_write_s(uint8_t reg, uint8_t data, uint8_t CSN) {
 	CLEARBIT(PORTB, CSN); //Activate Chip Selection on nRF2401
 	_delay_us(20);
@@ -45,7 +45,7 @@ void nRF_2401_reg_write_s(uint8_t reg, uint8_t data, uint8_t CSN) {
 	SETBIT(PORTB, CSN); //Deactivate Chip Selection on nRF2401
 	_delay_us(20);
 }
-
+//Read a single byte register
 uint8_t nRF_2401_reg_read(uint8_t reg, uint8_t CSN) {
 	CLEARBIT(PORTB, CSN); //Activate Chip Selection on nRF2401
 	_delay_us(20);
@@ -55,7 +55,8 @@ uint8_t nRF_2401_reg_read(uint8_t reg, uint8_t CSN) {
 	_delay_us(20);
 	return result;
 }
-void nRF2401_transmit_payload(uint8_t *buffer, uint8_t CSN, uint8_t NRF_CE){
+//Sending a payload and transmit it
+void nRF2401_transmit_payload(struct payload *payload, uint8_t CSN, uint8_t NRF_CE){
 	CLEARBIT(PORTB, CSN); //Activate Chip Selection on nRF2401
 	_delay_us(10);
 	spi_transfer(FLUSH_TX);
@@ -65,10 +66,10 @@ void nRF2401_transmit_payload(uint8_t *buffer, uint8_t CSN, uint8_t NRF_CE){
 	CLEARBIT(PORTB, CSN); //Activate Chip Selection on nRF2401
 	_delay_us(10);
 	spi_transfer(W_TX_PAYLOAD);
-	uint8_t index;
-	for(index = 0; index < 5; index++){
-		spi_transfer(buffer[index]);
-	}
+	spi_transfer(payload->header_status);
+	spi_transfer(payload->speed);
+	spi_transfer(payload->direction);
+	spi_transfer(payload->frontlight);
 	SETBIT(PORTB, CSN);							//Activating trasnmitter
 	_delay_ms(10);
 	SETBIT(PORTB, NRF_CE);
@@ -76,13 +77,16 @@ void nRF2401_transmit_payload(uint8_t *buffer, uint8_t CSN, uint8_t NRF_CE){
 	CLEARBIT(PORTB, NRF_CE);
 	_delay_ms(10);
 }
+//Reseting Interupt bits
 void nRF2401_reset_IRQ(uint8_t CSN){
 	nRF_2401_reg_write_s(STATUS, 0x70, CSN);
 }
+//Set the nRF24l01+ to receive mode
 void nRF2401_set_receiver_mode(uint8_t CSN, uint8_t CE){
 	nRF_2401_reg_write_s(CONFIG, 0x1F, CSN);			//PRX, PWR_UP, CRC_2byte, Enable CRC, No_IRQ
 	SETBIT(PORTB, CE);									// Activate receiver
 }
+//Read the received payload. This function unset the receiving mode too
 void nRF2401_receive_payload(uint8_t CSN, uint8_t CE, uint8_t *buffer){
 	while( !(nRF_2401_reg_read(STATUS, CSN) & BIT(RX_DR)) ){  	//wait until payload received and processed
 		_delay_us(10);

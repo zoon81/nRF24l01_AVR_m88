@@ -6,14 +6,11 @@
  */
 #include "uart.h"
 
-void UARTInit()  // UART beallitasa
+void UARTInit()  
 {
-
-	UBRR0L = UBRR_VAL; // UBRR_ERTEK also 8 bitjenek betoltese az UBRRL regiszterbe
-	UBRR0H = (UBRR_VAL >> 8); // UBRR_ERTEK felso 8 bitjenek betoltese az UBRRH regiszterbe
+	UBRR0L = UBRR_VAL; 
+	UBRR0H = (UBRR_VAL >> 8); 
 	// UCSR0A |= (1<<U2X0);
-
-	//Ado es Vevo aramkorok bekapcsolasa
 
 	UCSR0B = (1 << RXEN0) | (1 << TXEN0);
 	UCSR0C = (3 << UCSZ00);
@@ -38,7 +35,7 @@ void UARTSendString(char * str)
 		str++;
 	}
 }
-char UARTSend_uint8(uint8_t number)
+void UARTSend_uint8(uint8_t number)
 {
 	uint8_t data;
 	if(number > 99){

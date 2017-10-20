@@ -52,6 +52,7 @@
             "name": "AVR",
             "includePath": [
                 "/usr/lib/avr/include",
+                "/usr/lib/avr/include/avr",
                 "${workspaceRoot}/inc"
             ],
             "defines": ["__AVR_ATmega88__"],
