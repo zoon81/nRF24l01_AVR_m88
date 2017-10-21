@@ -22,18 +22,19 @@ MCU = atmega88
 CLK = 8000000
 # avr programmer (and port if necessary)
 # e.g. PRG = usbtiny -or- PRG = arduino -P /dev/tty.usbmodem411
-PRG = usbasp
+
+# this fuse bits and programer settings are fit for a bootloaded atmega88
+PRG = arduino -P /dev/ttyUSB0 -b 19200
 # fuse values for avr: low, high, and extended
-# these values are from an Arduino Uno (ATMega328P)
 # see http://www.engbedded.com/fusecalc/ for other MCUs and options
-LFU = 0xFF
-HFU = 0xDE
-EFU = 0x05
+LFU = 0xe2
+HFU = 0xdf
+EFU = 0xf8
 # program source files (not including external libraries)
 SRC = $(PRJ).cpp
 # where to look for external libraries (consisting of .c/.cpp files and .h files)
 # e.g. EXT = ../../EyeToSee ../../YouSART
-EXT = ./inc ./src
+EXT = ./inc ./utils ./HAL/ ./HAL/inc ./drivers ./drivers/inc
 
 
 #################################################################################################
@@ -62,8 +63,10 @@ EXTCPP   := $(foreach dir, $(EXT), $(wildcard $(dir)/*.cpp))
 OBJ       = $(CFILES:.c=.o) $(EXTC:.c=.o) $(CPPFILES:.cpp=.o) $(EXTCPP:.cpp=.o)
 
 # user targets
-# compile all files
+# compile all files and delete object files
 all: $(PRJ).hex
+	rm -f *.o
+	$(foreach dir, $(EXT), rm -f $(dir)/*.o;)
 
 # test programmer connectivity
 test:

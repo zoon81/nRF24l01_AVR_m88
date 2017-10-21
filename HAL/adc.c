@@ -12,7 +12,7 @@ uint8_t adc_read(uint8_t channel){
     ADCSRA |= BIT(ADIF);
     return ADCH;
 }
-uint8_t adc_startconversion(uint8_t channel){
+void adc_startconversion(uint8_t channel){
     ADMUX = (ADMUX & 0xF0) | channel;
     ADCSRA |= BIT(ADSC);
 }

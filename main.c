@@ -76,7 +76,11 @@ ISR(ADC_vect){
     }
 
 }
+void init_switch(){
+    // PD3-PD7 input
+    SW_DDR &= ~(0xf8);
+}
 uint8_t switch_values(){
-
-    return 0;
+    uint8_t pinvalue = (PIND >> 3 );
+    return pinvalue;
 }
