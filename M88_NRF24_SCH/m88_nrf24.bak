@@ -1,0 +1,532 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Crystal Y1
+U 1 1 59F9EE37
+P 1390 3650
+F 0 "Y1" H 1390 3800 50  0000 C CNN
+F 1 "Crystal" H 1390 3500 50  0000 C CNN
+F 2 "" H 1390 3650 50  0000 C CNN
+F 3 "" H 1390 3650 50  0000 C CNN
+	1    1390 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C1
+U 1 1 59F9EF32
+P 880 3850
+F 0 "C1" H 905 3950 50  0000 L CNN
+F 1 "C" H 905 3750 50  0000 L CNN
+F 2 "" H 918 3700 50  0000 C CNN
+F 3 "" H 880 3850 50  0000 C CNN
+	1    880  3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C2
+U 1 1 59F9EF89
+P 1860 3870
+F 0 "C2" H 1885 3970 50  0000 L CNN
+F 1 "C" H 1885 3770 50  0000 L CNN
+F 2 "" H 1898 3720 50  0000 C CNN
+F 3 "" H 1860 3870 50  0000 C CNN
+	1    1860 3870
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_02X03 P2
+U 1 1 59F9F39C
+P 5180 5920
+F 0 "P2" H 5180 6120 50  0000 C CNN
+F 1 "ISP_CON" H 5180 5720 50  0000 C CNN
+F 2 "" H 5180 4720 50  0000 C CNN
+F 3 "" H 5180 4720 50  0000 C CNN
+	1    5180 5920
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_02X07 P3
+U 1 1 59F9F550
+P 5180 5080
+F 0 "P3" H 5180 5480 50  0000 C CNN
+F 1 "Remote_CONN" V 5180 5080 50  0000 C CNN
+F 2 "" H 5180 3880 50  0000 C CNN
+F 3 "" H 5180 3880 50  0000 C CNN
+	1    5180 5080
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 59F9FBA8
+P 880 4000
+F 0 "#PWR?" H 880 3750 50  0001 C CNN
+F 1 "GND" H 880 3850 50  0000 C CNN
+F 2 "" H 880 4000 50  0000 C CNN
+F 3 "" H 880 4000 50  0000 C CNN
+	1    880  4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 59F9FBFD
+P 1860 4020
+F 0 "#PWR?" H 1860 3770 50  0001 C CNN
+F 1 "GND" H 1860 3870 50  0000 C CNN
+F 2 "" H 1860 4020 50  0000 C CNN
+F 3 "" H 1860 4020 50  0000 C CNN
+	1    1860 4020
+	1    0    0    -1  
+$EndComp
+$Comp
+L ATMEGA88-A IC1
+U 1 1 59F9ED72
+P 1870 6090
+F 0 "IC1" H 1120 7340 50  0000 L BNN
+F 1 "ATMEGA88-A" H 2320 4690 50  0000 L BNN
+F 2 "TQFP32" H 1870 6090 50  0000 C CIN
+F 3 "" H 1870 6090 50  0000 C CNN
+	1    1870 6090
+	1    0    0    -1  
+$EndComp
+Text Label 3080 5190 0    60   ~ 0
+SPI_SS
+Text Label 3090 5290 0    60   ~ 0
+SPI_MOSI
+Text Label 3080 5390 0    60   ~ 0
+SPI_MISO
+Text Label 3090 5490 0    60   ~ 0
+SPI_SCK
+Text Label 3080 5590 0    60   ~ 0
+XTAL1
+Text Label 3090 5690 0    60   ~ 0
+XTAL2
+Text Label 3100 6790 0    60   ~ 0
+GPIO_PD2_INT0
+Text Label 4750 5820 2    60   ~ 0
+ISP_MISO
+Text Label 4750 5920 2    60   ~ 0
+ISP_SCK
+Text Label 4750 6020 2    60   ~ 0
+MCU_RESET
+Text Label 5610 5820 0    60   ~ 0
+VCC
+Text Label 5610 5920 0    60   ~ 0
+ISP_MOSI
+Text Label 5610 6020 0    60   ~ 0
+GND
+Text Label 4590 6780 2    60   ~ 0
+GND
+Text Label 4590 6880 2    60   ~ 0
+NRF_CE
+Text Label 4590 6980 2    60   ~ 0
+NRF_SCK
+Text Label 4590 7080 2    60   ~ 0
+NRF_MISO
+$Comp
+L CONN_01X04 P1_1
+U 1 1 59FA1760
+P 4970 6930
+F 0 "P1_1" H 4970 7180 50  0000 C CNN
+F 1 "NRF_CONN_P1" V 5070 6890 50  0000 C CNN
+F 2 "" H 4970 6930 50  0000 C CNN
+F 3 "" H 4970 6930 50  0000 C CNN
+	1    4970 6930
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X04 P1_2
+U 1 1 59FA1945
+P 5340 6910
+F 0 "P1_2" H 5360 6660 50  0000 C CNN
+F 1 "NRF_CONN_P2" V 5510 6970 50  0000 C CNN
+F 2 "" H 5340 6910 50  0000 C CNN
+F 3 "" H 5340 6910 50  0000 C CNN
+	1    5340 6910
+	-1   0    0    1   
+$EndComp
+Text Label 5720 6760 0    60   ~ 0
+NRF_IRQ
+Text Label 5720 6860 0    60   ~ 0
+NRF_MOSI
+Text Label 5720 6960 0    60   ~ 0
+NRF_CSN
+Text Label 5720 7060 0    60   ~ 0
+VCC
+Text Label 3090 5090 0    60   ~ 0
+GPIO_PB1
+Text Label 4750 4780 2    60   ~ 0
+VR4_ROT
+Text Label 4750 4880 2    60   ~ 0
+LED2_RED
+Text Label 4750 4980 2    60   ~ 0
+LED1_GREEN
+Text Label 4750 5080 2    60   ~ 0
+SW2_C
+Text Label 4750 5180 2    60   ~ 0
+SW2_B
+Text Label 4750 5280 2    60   ~ 0
+SW2_A
+Text Label 4750 5380 2    60   ~ 0
+VR3_L_Y
+Text Label 5610 4780 0    60   ~ 0
+VCC
+Text Label 5610 4880 0    60   ~ 0
+GND
+Text Label 5610 4980 0    60   ~ 0
+VR2_RA_X
+Text Label 5610 5080 0    60   ~ 0
+VR1_RA_Y
+NoConn ~ 5610 5180
+Text Label 5610 5280 0    60   ~ 0
+P02
+Text Label 5610 5380 0    60   ~ 0
+P05
+Text Label 3100 5840 0    60   ~ 0
+ADC0
+Text Label 3090 5940 0    60   ~ 0
+ADC1
+Text Label 760  6440 2    60   ~ 0
+ADC7
+Text Label 760  6340 2    60   ~ 0
+ADC6
+Text Label 3080 6440 0    60   ~ 0
+MCU_RESET
+Text Label 3100 6990 0    60   ~ 0
+GPIO_PD4
+Text Label 3090 7090 0    60   ~ 0
+GPIO_PD5
+Text Label 3080 7190 0    60   ~ 0
+GPIO_PD6
+Text Label 3090 7290 0    60   ~ 0
+GPIO_PD7
+Text Label 3100 6040 0    60   ~ 0
+GPIO_PC2
+Text Label 3090 6140 0    60   ~ 0
+GPIO_PC3
+$Comp
+L GND #PWR?
+U 1 1 59FA5175
+P 710 7410
+F 0 "#PWR?" H 710 7160 50  0001 C CNN
+F 1 "GND" H 710 7260 50  0000 C CNN
+F 2 "" H 710 7410 50  0000 C CNN
+F 3 "" H 710 7410 50  0000 C CNN
+	1    710  7410
+	1    0    0    -1  
+$EndComp
+$Comp
+L VCC #PWR?
+U 1 1 59FA5758
+P 710 4760
+F 0 "#PWR?" H 710 4610 50  0001 C CNN
+F 1 "VCC" H 710 4910 50  0000 C CNN
+F 2 "" H 710 4760 50  0000 C CNN
+F 3 "" H 710 4760 50  0000 C CNN
+	1    710  4760
+	1    0    0    -1  
+$EndComp
+Text Notes 7080 830  0    197  ~ 39
+PIN ASSIGMENT
+Text Label 9670 2550 0    60   ~ 0
+VR4_ROT
+Text Label 9600 3950 0    60   ~ 0
+LED2_RED
+Text Label 9600 3860 0    60   ~ 0
+LED1_GREEN
+Text Label 9600 4240 0    60   ~ 0
+SW2_C
+Text Label 9610 4140 0    60   ~ 0
+SW2_B
+Text Label 9600 4040 0    60   ~ 0
+SW2_A
+Text Label 9670 2450 0    60   ~ 0
+VR3_L_Y
+Text Label 9670 2350 0    60   ~ 0
+VR2_RA_X
+Text Label 9610 4430 0    60   ~ 0
+P02
+Text Label 9600 4330 0    60   ~ 0
+P05
+Text Label 9730 3480 0    60   ~ 0
+NRF_IRQ
+Text Label 9670 1520 0    60   ~ 0
+NRF_MOSI
+Text Label 9670 1730 0    60   ~ 0
+NRF_CSN
+Text Label 9670 1830 0    60   ~ 0
+NRF_CE
+Text Label 9670 1090 0    60   ~ 0
+NRF_SCK
+Text Label 9670 1300 0    60   ~ 0
+NRF_MISO
+Text Label 9670 1630 0    60   ~ 0
+ISP_MISO
+Text Label 9670 1200 0    60   ~ 0
+ISP_SCK
+Text Label 9670 1410 0    60   ~ 0
+ISP_MOSI
+Text Label 8620 1630 2    60   ~ 0
+SPI_MOSI
+Text Label 8620 1200 2    60   ~ 0
+SPI_SCK
+Text Label 8620 1730 2    60   ~ 0
+GPIO_PB1
+Text Label 8700 4240 2    60   ~ 0
+GPIO_PD4
+Text Label 8700 4140 2    60   ~ 0
+GPIO_PD5
+Text Label 8700 4040 2    60   ~ 0
+GPIO_PD6
+Text Label 8700 3950 2    60   ~ 0
+GPIO_PD7
+Text Label 8620 2250 2    60   ~ 0
+ADC0
+Text Label 8620 2350 2    60   ~ 0
+ADC1
+Text Label 8700 4430 2    60   ~ 0
+GPIO_PC2
+Text Label 8700 4330 2    60   ~ 0
+GPIO_PC3
+Text Label 8620 2550 2    60   ~ 0
+ADC7
+Text Label 8620 2450 2    60   ~ 0
+ADC6
+Text Label 8630 1410 2    60   ~ 0
+SPI_MISO
+Wire Wire Line
+	880  3650 880  3700
+Wire Wire Line
+	1540 3650 1860 3650
+Wire Wire Line
+	1860 3650 1860 3720
+Wire Wire Line
+	1240 3650 880  3650
+Wire Wire Line
+	2870 5390 3080 5390
+Wire Wire Line
+	2870 5490 3090 5490
+Wire Wire Line
+	2870 5190 3080 5190
+Wire Wire Line
+	2870 5290 3090 5290
+Wire Wire Line
+	2870 5590 3080 5590
+Wire Wire Line
+	2870 5690 3090 5690
+Wire Wire Line
+	2870 5090 3090 5090
+Wire Wire Line
+	4750 5820 4930 5820
+Wire Wire Line
+	4750 5920 4930 5920
+Wire Wire Line
+	4750 6020 4930 6020
+Wire Wire Line
+	5430 5820 5610 5820
+Wire Wire Line
+	5430 5920 5610 5920
+Wire Wire Line
+	5430 6020 5610 6020
+Wire Wire Line
+	4590 6780 4770 6780
+Wire Wire Line
+	4590 6880 4770 6880
+Wire Wire Line
+	4590 6980 4770 6980
+Wire Wire Line
+	5540 6760 5720 6760
+Wire Wire Line
+	5540 6860 5720 6860
+Wire Wire Line
+	5540 6960 5720 6960
+Wire Wire Line
+	4590 7080 4770 7080
+Wire Wire Line
+	5540 7060 5720 7060
+Wire Wire Line
+	2870 6790 3100 6790
+Wire Wire Line
+	4750 4780 4930 4780
+Wire Wire Line
+	4750 4880 4930 4880
+Wire Wire Line
+	4750 4980 4930 4980
+Wire Wire Line
+	4750 5080 4930 5080
+Wire Wire Line
+	4750 5180 4930 5180
+Wire Wire Line
+	4750 5280 4930 5280
+Wire Wire Line
+	4750 5380 4930 5380
+Wire Wire Line
+	5430 4780 5610 4780
+Wire Wire Line
+	5430 4880 5610 4880
+Wire Wire Line
+	5430 4980 5610 4980
+Wire Wire Line
+	5430 5080 5610 5080
+Wire Wire Line
+	5430 5180 5610 5180
+Wire Wire Line
+	5430 5280 5610 5280
+Wire Wire Line
+	5430 5380 5610 5380
+Wire Wire Line
+	2870 6440 3080 6440
+Wire Wire Line
+	2870 5940 3090 5940
+Wire Wire Line
+	2870 5840 3100 5840
+Wire Wire Line
+	2870 7190 3080 7190
+Wire Wire Line
+	2870 7290 3090 7290
+Wire Wire Line
+	2870 7090 3090 7090
+Wire Wire Line
+	2870 6990 3100 6990
+Wire Wire Line
+	970  6340 760  6340
+Wire Wire Line
+	970  6440 760  6440
+Wire Wire Line
+	2870 6140 3090 6140
+Wire Wire Line
+	2870 6040 3100 6040
+Wire Wire Line
+	970  7090 710  7090
+Wire Wire Line
+	970  7190 710  7190
+Connection ~ 710  7190
+Wire Wire Line
+	710  7090 710  7410
+Wire Wire Line
+	710  7290 970  7290
+Connection ~ 710  7290
+Wire Wire Line
+	710  5090 970  5090
+Wire Wire Line
+	710  4760 710  5090
+Wire Wire Line
+	970  4990 710  4990
+Connection ~ 710  4990
+Wire Notes Line
+	6970 6510 6970 550 
+Wire Notes Line
+	6970 550  11090 550 
+Wire Notes Line
+	11090 550  11090 6510
+Wire Notes Line
+	11090 6510 6970 6510
+Wire Notes Line
+	6970 930  11090 930 
+Wire Notes Line
+	11090 930  11090 920 
+Wire Wire Line
+	8620 1200 9670 1200
+Wire Wire Line
+	8700 4240 9600 4240
+Wire Wire Line
+	8700 4330 9600 4330
+Wire Wire Line
+	8700 4430 9610 4430
+Wire Wire Line
+	9520 1200 9520 1090
+Wire Wire Line
+	9520 1090 9670 1090
+Connection ~ 9520 1200
+Wire Wire Line
+	8630 1410 9670 1410
+Wire Wire Line
+	9520 1300 9670 1300
+Wire Wire Line
+	8620 1630 9670 1630
+Wire Wire Line
+	9520 1520 9670 1520
+Wire Wire Line
+	8620 1730 9670 1730
+Wire Wire Line
+	9520 1300 9520 1410
+Connection ~ 9520 1410
+Wire Wire Line
+	9520 1520 9520 1630
+Connection ~ 9520 1630
+Wire Wire Line
+	8620 1830 9670 1830
+Text Label 3090 4990 0    60   ~ 0
+GPIO_PB0
+Wire Wire Line
+	2870 4990 3090 4990
+Text Label 8620 1830 2    60   ~ 0
+GPIO_PB0
+Text Label 9670 2250 0    60   ~ 0
+VR1_RA_Y
+Wire Wire Line
+	8620 2250 9670 2250
+Wire Wire Line
+	8620 2350 9670 2350
+Wire Wire Line
+	8620 2450 9670 2450
+Wire Wire Line
+	8620 2550 9670 2550
+Wire Wire Line
+	8700 3950 9600 3950
+Wire Wire Line
+	8700 4040 9600 4040
+Wire Wire Line
+	8700 4140 9610 4140
+Wire Wire Line
+	8700 3860 9600 3860
+Text Label 8710 3400 2    60   ~ 0
+GPIO_PD2_INT0
+Wire Wire Line
+	2870 6590 3100 6590
+Text Label 3100 6590 0    60   ~ 0
+GPIO_PD0
+Text Label 8700 3860 2    60   ~ 0
+GPIO_PD0
+$EndSCHEMATC
