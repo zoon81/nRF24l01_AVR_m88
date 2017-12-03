@@ -107,7 +107,8 @@ void nRF_2401_reg_write_s(uint8_t reg, uint8_t data, uint8_t CSN);
 uint8_t nRF_2401_reg_read(uint8_t reg, uint8_t CSN);
 void nRF2401_transmit_payload(struct payload *payload, uint8_t CSN, uint8_t NRF_CE);
 void nRF2401_reset_IRQ(uint8_t CSN);
-void nRF2401_set_receiver_mode(uint8_t CSN, uint8_t CE);
-void nRF2401_receive_payload(uint8_t CSN, uint8_t CE, uint8_t *buffer);
+void nRF2401_set_receiver_mode(uint8_t CE);
+void nRF2401_receive_payload(uint8_t CSN, uint8_t CE, struct payload *buffer);
+void nRF2401_receive_payload_it(uint8_t CSN, uint8_t CE, struct payload *buffer);
 
 #endif /* INC_NRF24L01_H_ */

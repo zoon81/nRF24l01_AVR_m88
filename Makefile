@@ -24,7 +24,7 @@ CLK = 8000000
 # e.g. PRG = usbtiny -or- PRG = arduino -P /dev/tty.usbmodem411
 
 # this fuse bits and programer settings are fit for a bootloaded atmega88
-PRG = arduino -P /dev/ttyUSB0 -b 19200
+PRG = arduino -P /dev/ttyUSB1 -b 19200
 # fuse values for avr: low, high, and extended
 # see http://www.engbedded.com/fusecalc/ for other MCUs and options
 LFU = 0xe2
