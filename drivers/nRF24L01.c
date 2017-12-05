@@ -10,7 +10,7 @@ void nRF2401_init(uint8_t NRF_CSN, uint8_t NRF_CE) {
 	SETBIT(DDRB, NRF_CE);
 	spi_init(NRF_CSN);
 	nRF_2401_reg_write_s(EN_AA, 0x01, NRF_CSN);			//Enable auto acknowledgement data pipe 0
-	nRF_2401_reg_write_s(SETUP_RETR, 0x2F, NRF_CSN);	//Automatic Retransmission, Wait 750μS  Up to 15 Re-Transmit on fail of AA
+	nRF_2401_reg_write_s(SETUP_RETR, 0x15, NRF_CSN);	////Auto Retransmit Delay: 500μS and  Up to 5 Re-Transmit on fail of AA
 	nRF_2401_reg_write_s(EN_RXADDR, 0x01, NRF_CSN);		//Enable data pipe 0.
 	nRF_2401_reg_write_s(SETUP_AW, 0x03, NRF_CSN);		//5bytes Address Width
 	nRF_2401_reg_write_s(RF_CH, 0x01, NRF_CSN);			//RF Chanel 2.401 GHz
@@ -58,10 +58,10 @@ uint8_t nRF_2401_reg_read(uint8_t reg, uint8_t CSN) {
 //Sending a payload and transmit it
 void nRF2401_transmit_payload(struct payload *payload, uint8_t CSN, uint8_t NRF_CE){
 	CLEARBIT(PORTB, CSN); //Activate Chip Selection on nRF2401
-	_delay_us(10);
+	//_delay_us(10);
 	spi_transfer(FLUSH_TX);
 	SETBIT(PORTB, CSN);
-	_delay_us(10);
+	//_delay_us(10);
 
 	CLEARBIT(PORTB, CSN); //Activate Chip Selection on nRF2401
 	spi_transfer(W_TX_PAYLOAD);
@@ -72,12 +72,12 @@ void nRF2401_transmit_payload(struct payload *payload, uint8_t CSN, uint8_t NRF_
 	spi_transfer(NOP);							// this is for the payload width,
 	//If you not putting exactly 5 byte intro TX_FIFO you get fucked,
 	//you get CRC missmatch on RX side and you never get ACK from receiver. This gave me 10h troubleshotting
-	SETBIT(PORTB, CSN);							//Activating trasnmitter
-	_delay_ms(10);
-	SETBIT(PORTB, NRF_CE);
+	SETBIT(PORTB, CSN);							
+	//_delay_ms(10);
+	SETBIT(PORTB, NRF_CE);					//Activating trasnmitter
 	_delay_us(20);
 	CLEARBIT(PORTB, NRF_CE);
-	_delay_ms(5);
+	_delay_ms(5);						//This is for the auto retransmission if no ack received
 }
 //Reseting Interupt bits
 void nRF2401_reset_IRQ(uint8_t CSN){
